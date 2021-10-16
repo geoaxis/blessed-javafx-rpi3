@@ -17,6 +17,7 @@
   <properties>
     <java.version>17</java.version>
     <blessed-bluez-version>0.39</blessed-bluez-version>
+    <lombok-version>1.18.22</lombok-version>
   </properties>
   <dependencies>
     <dependency>
@@ -33,6 +34,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
+      <version>${lombok-version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
