@@ -55,3 +55,4 @@ A JavaFX based application that uses BLE stack of raspberry pi3
     ```
 - In the case you have hciuart service errors and if you have an LCD like JoyIT 5-inch touch screen it may add config similar to `console=ttyAMA0,115200`. You will need to remove it (so that hciuart service can work and bluetooth service is enabled)
 - While not necessary, you may like to only enable LE part of bluetooth for Bluez by adding `ControllerMode = le` to `/etc/bluetooth/main.conf`
+- It may be necessary to enable fake kms for 3d to work. TODO

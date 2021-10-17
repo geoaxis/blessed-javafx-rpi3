@@ -25,15 +25,18 @@
       <artifactId>spring-boot-starter</artifactId>
     </dependency>
 
+    <!--
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
       <optional>true</optional>
     </dependency>
+    -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
+      <!-- forces a java 17 compatible version of lombok -->
       <version>${lombok-version}</version>
       <optional>true</optional>
     </dependency>
@@ -46,6 +49,21 @@
       <groupId>com.github.weliem.blessed-bluez</groupId>
       <artifactId>blessed</artifactId>
       <version>${blessed-bluez-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>17-ea+11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>17-ea+11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-web</artifactId>
+      <version>17-ea+11</version>
     </dependency>
   </dependencies>
 
