@@ -56,3 +56,6 @@ A JavaFX based application that uses BLE stack of raspberry pi3
 - In the case you have hciuart service errors and if you have an LCD like JoyIT 5-inch touch screen it may add config similar to `console=ttyAMA0,115200`. You will need to remove it (so that hciuart service can work and bluetooth service is enabled)
 - While not necessary, you may like to only enable LE part of bluetooth for Bluez by adding `ControllerMode = le` to `/etc/bluetooth/main.conf`
 - It may be necessary to enable fake kms for 3d to work. TODO
+
+
+  -Djava.library.path=/opt/javafx-sdk-17.0.0.1/lib/ --module-path=/opt/javafx-sdk-17.0.0.1/lib/ --add-modules=javafx.controls,javafx.graphics,javafx.fxml -Dglass.platform=Monocle  -Dmonocle.platform=EGL -Dembedded=monocle -Dmonocle.egl.lib=/opt/javafx-sdk-17.0.0.1/lib/libgluon_drm_debug-1.1.6.so -Dglass.platform=Monocle -Degl.displayid=/dev/dri/card0  -Duse.egl=true -Dcom.sun.javafx.isEmbedded=true

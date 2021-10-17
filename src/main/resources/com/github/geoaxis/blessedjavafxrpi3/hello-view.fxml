@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.2" fx:controller="com.github.geoaxis.blessedjavafxrpi3.HelloFxController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-  </padding>
-   <Button mnemonicParsing="false" text="Scan" />
+<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.geoaxis.blessedjavafxrpi3.HelloFxController">
+    <SplitPane dividerPositions="0.5" minWidth="800.0">
+      <AnchorPane>
+        <GridPane>
+          <Button mnemonicParsing="false" fx:id="scan" onAction="#onScanButton" text="Scan" GridPane.rowIndex="0" />
 
-  <Label fx:id="welcomeText" text="Hello World" />
+          <Label fx:id="welcomeText" text="Hello World" GridPane.rowIndex="1" />
+               <ProgressIndicator progress="0.0" GridPane.columnIndex="1" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+        </GridPane>
+      </AnchorPane>
+      <AnchorPane>
+        <ListView fx:id="devices"/>
 
-</VBox>
+      </AnchorPane>
+    </SplitPane>
+
+  </AnchorPane>

@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BlessedJavafxRpi3Application extends Application {
 
   @Autowired
-  private  HelloFxController helloFxController;
+  private HelloFxController helloFxController;
 
   public static void main(String[] args) {
     Application.launch();
@@ -26,7 +26,8 @@ public class BlessedJavafxRpi3Application extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(BlessedJavafxRpi3Application.class.getResource("hello-view.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(BlessedJavafxRpi3Application.class.getResource(
+        "hello-view.fxml"));
     fxmlLoader.setControllerFactory(param -> helloFxController);
 
     Scene scene = new Scene(fxmlLoader.load(), 800, 480);
