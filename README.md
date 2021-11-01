@@ -3,9 +3,8 @@
 A JavaFX based application that uses BLE stack of raspberry pi3
 
 # Setup
-- Install Raspberry pi OS on your raspberry pi 3, 32 bit (should also work on 4 and on 64 bit version too bue I have not tested it yet)
-- Make sure bluetooth packages are installed and your user (pi) is in the bluetooth group
-- Check that your bluetooth device is available
+- Install Raspberry pi OS on your raspberry pi 3, 64 bit (should work on raspberry pi zero 2 w, but I have not tested)
+- Check that your bluetooth and hciuart services are enabled and running.
     ```
     pi@raspberrypi:~ $ hciconfig
     hci0:   Type: Primary  Bus: UART
@@ -56,15 +55,11 @@ A JavaFX based application that uses BLE stack of raspberry pi3
 - In the case you have hciuart service errors and if you have an LCD like JoyIT 5-inch touch screen it may add config similar to `console=ttyAMA0,115200`. You will need to remove it (so that hciuart service can work and bluetooth service is enabled)
 - While not necessary, you may like to only enable LE part of bluetooth for Bluez by adding `ControllerMode = le` to `/etc/bluetooth/main.conf`
 - It may be necessary to enable fake kms for 3d to work. TODO
-
-
-  -Djava.library.path=/opt/javafx-sdk-17.0.0.1/lib/ --module-path=/opt/javafx-sdk-17.0.0.1/lib/ --add-modules=javafx.controls,javafx.graphics,javafx.fxml -Dglass.platform=Monocle  -Dmonocle.platform=EGL -Dembedded=monocle -Dmonocle.egl.lib=/opt/javafx-sdk-17.0.0.1/lib/libgluon_drm_debug-1.1.6.so -Dglass.platform=Monocle -Degl.displayid=/dev/dri/card0  -Duse.egl=true -Dcom.sun.javafx.isEmbedded=true
-  
-
-installe things:
-sudo apt install libegl-mesa0 libegl1 libgbm1 libgles2 libpango-1.0.0 libpangoft2-1.0-0
+- Don't forget to install required packages for gluonfx to work. See their [documentation](https://docs.gluonhq.com/#platforms_embedded) 
 
 
 TODO:
+
+-Djava.library.path=/opt/javafx-sdk-17.0.0.1/lib/ --module-path=/opt/javafx-sdk-17.0.0.1/lib/ --add-modules=javafx.controls,javafx.graphics,javafx.fxml -Dglass.platform=Monocle  -Dmonocle.platform=EGL -Dembedded=monocle -Dmonocle.egl.lib=/opt/javafx-sdk-17.0.0.1/lib/libgluon_drm_debug-1.1.6.so -Dglass.platform=Monocle -Degl.displayid=/dev/dri/card0  -Duse.egl=true -Dcom.sun.javafx.isEmbedded=true
 
 -Dpism.verbose=false -Djava.library.path=/home/pi/javafx-sdk-18/lib/ --module-path=/home/pi/javafx-sdk-18/lib/ --add-modules=javafx.controls,javafx.graphics,javafx.fxml -Dglass.platform=Monocle  -Dmonocle.platform=EGL -Dembedded=monocle -Dmonocle.egl.lib=/home/pi/javafx-sdk-18/lib/libgluon_drm-1.1.6.so -Degl.displayid=/dev/dri/card0   -Dcom.sun.javafx.isEmbedded=true
