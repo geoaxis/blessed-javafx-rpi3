@@ -12,8 +12,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BlessedJavafxRpi3Application extends Application {
 
-  @Autowired
-  private HelloFxController helloFxController;
+  private final HelloFxController helloFxController;
+
+  public BlessedJavafxRpi3Application(HelloFxController helloFxController) {
+    this.helloFxController = helloFxController;
+  }
 
   public static void main(String[] args) {
     Application.launch();

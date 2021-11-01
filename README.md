@@ -59,3 +59,12 @@ A JavaFX based application that uses BLE stack of raspberry pi3
 
 
   -Djava.library.path=/opt/javafx-sdk-17.0.0.1/lib/ --module-path=/opt/javafx-sdk-17.0.0.1/lib/ --add-modules=javafx.controls,javafx.graphics,javafx.fxml -Dglass.platform=Monocle  -Dmonocle.platform=EGL -Dembedded=monocle -Dmonocle.egl.lib=/opt/javafx-sdk-17.0.0.1/lib/libgluon_drm_debug-1.1.6.so -Dglass.platform=Monocle -Degl.displayid=/dev/dri/card0  -Duse.egl=true -Dcom.sun.javafx.isEmbedded=true
+  
+
+installe things:
+sudo apt install libegl-mesa0 libegl1 libgbm1 libgles2 libpango-1.0.0 libpangoft2-1.0-0
+
+
+TODO:
+
+-Dpism.verbose=false -Djava.library.path=/home/pi/javafx-sdk-18/lib/ --module-path=/home/pi/javafx-sdk-18/lib/ --add-modules=javafx.controls,javafx.graphics,javafx.fxml -Dglass.platform=Monocle  -Dmonocle.platform=EGL -Dembedded=monocle -Dmonocle.egl.lib=/home/pi/javafx-sdk-18/lib/libgluon_drm-1.1.6.so -Degl.displayid=/dev/dri/card0   -Dcom.sun.javafx.isEmbedded=true
