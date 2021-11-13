@@ -7,7 +7,7 @@ public enum BLEState {
   CONNECTED("Connected"),
   DISCONNECTING("Disconnecting");
 
-  String text;
+  final String text;
 
   BLEState(String text) {
     this.text = text;

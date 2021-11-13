@@ -57,7 +57,7 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
         return;
       }
 
-      if (characteristicUUID.equals(UUID_TEMPERATURE_CONFIG)) {
+      if (characteristicUUID.getUuid().equals(UUID_TEMPERATURE_CONFIG)) {
         log.info("temperature notifications configured");
 
         BluetoothGattCharacteristic temperatureDataChar = peripheral.getCharacteristic(
@@ -75,7 +75,6 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
     BluetoothGattCharacteristic characteristic,
     BluetoothCommandStatus status) {
       final UUID characteristicUUID = characteristic.getUuid();
-      final BluetoothBytesParser parser = new BluetoothBytesParser(value);
 
       // Deal with errors
       if (status != COMMAND_SUCCESS) {

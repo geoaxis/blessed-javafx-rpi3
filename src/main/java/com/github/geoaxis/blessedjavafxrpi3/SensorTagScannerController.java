@@ -70,13 +70,18 @@ public class SensorTagScannerController implements Initializable {
   private final PeripheralCallback peripheralCallback = new PeripheralCallback(irTemperatureString,
       ambientTemperatureString);
 
+  private final BluetoothCentralManagerCallback managerCallback = new CentralManagerCallback(
+      bleStateProperty,
+      connectedPeripheral,
+      discoveredDevices,
+      peripheralMap);
+
 
   private final BluetoothCentralManager centralManager;
 
   public SensorTagScannerController() {
     log.info("initializing BluetoothCentral");
-    centralManager = new BluetoothCentralManager(managerCallback,
-        Set.of(SCANOPTION_NO_NULL_NAMES));
+    centralManager = new BluetoothCentralManager(managerCallback, Set.of(SCANOPTION_NO_NULL_NAMES));
   }
 
   @FXML
@@ -123,12 +128,6 @@ public class SensorTagScannerController implements Initializable {
 
     devices.setOnMouseClicked(touchEvent -> connect(devices.getSelectionModel().getSelectedItem()));
   }
-
-  private final BluetoothCentralManagerCallback managerCallback = new CentralManagerCallback(
-      bleStateProperty,
-      connectedPeripheral,
-      discoveredDevices,
-      peripheralMap);
 
   public void scan() {
     bleStateProperty.setValue(BLEState.SCANNING);
