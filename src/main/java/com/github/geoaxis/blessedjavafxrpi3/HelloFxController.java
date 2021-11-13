@@ -193,10 +193,10 @@ public class HelloFxController implements Initializable {
                   UUID_TEMPERATURE_CONFIG,
                   ENABLE,
                   WriteType.WITH_RESPONSE);
-              BluetoothGattCharacteristic movementChar = peripheral.getCharacteristic(
+              BluetoothGattCharacteristic temperatureDataChar = peripheral.getCharacteristic(
                   UUID_TEMPERATURE_SERVICE,
                   UUID_TEMPERATURE_DATA);
-              peripheral.setNotify(movementChar, true);
+              peripheral.setNotify(temperatureDataChar, true);
 
             }
 
@@ -215,12 +215,12 @@ public class HelloFxController implements Initializable {
             }
 
             if (characteristicUUID.equals(UUID_TEMPERATURE_CONFIG)) {
-              log.info("period done");
+              log.info("temperature notifications configured");
 
-              BluetoothGattCharacteristic movementChar = peripheral.getCharacteristic(
+              BluetoothGattCharacteristic temperatureDataChar = peripheral.getCharacteristic(
                   UUID_TEMPERATURE_SERVICE,
                   UUID_TEMPERATURE_DATA);
-              peripheral.setNotify(movementChar, true);
+              peripheral.setNotify(temperatureDataChar, true);
 
             }
 
@@ -241,8 +241,9 @@ public class HelloFxController implements Initializable {
               return;
             }
 
-            log.info("receiving an update");
             if (characteristicUUID.equals((UUID_TEMPERATURE_DATA))) {
+              log.info("receiving temperature data update");
+
               var result = calculateTemperature(value);
 
               if (result.length >= 2) {
@@ -311,7 +312,7 @@ public class HelloFxController implements Initializable {
 
   public void clearDevices() {
     Platform.runLater(() -> {
-      log.error("Clearing previously found");
+      log.error("Clearing previously found devices");
       discoveredDevices.clear();
       localSet.clear();
     });
