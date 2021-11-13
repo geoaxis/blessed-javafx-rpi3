@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.geoaxis.blessedjavafxrpi3.HelloFxController">
+<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.geoaxis.blessedjavafxrpi3.SensorTagScannerController">
     <SplitPane dividerPositions="0.4" minWidth="800.0">
       <AnchorPane>
         <GridPane AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
             <FlowPane prefHeight="0.0" prefWidth="0.0" GridPane.columnSpan="2147483647">
-               <children>
                 <Button fx:id="scanButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onScanButton" text="Scan" textAlignment="CENTER">
                      <graphic>
                            <ProgressIndicator fx:id="scanProgress" progress="-1.0" />
@@ -24,7 +23,6 @@
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding></Label>
-               </children>
             </FlowPane>
            <ListView fx:id="devices" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
                <GridPane.margin>
@@ -46,7 +44,6 @@
       </AnchorPane>
       <AnchorPane>
          <FlowPane fx:id="temperaturePane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
-            <children>
                <Button fx:id="disconnectButton" mnemonicParsing="false" onAction="#onDisconnect" text="Disconnect">
                   <FlowPane.margin>
                      <Insets bottom="20.0" left="150.0" right="150.0" top="20.0" />
@@ -68,7 +65,6 @@
                   <Insets left="80.0" right="80.0" />
                 </FlowPane.margin>
               </Label>
-            </children>
          </FlowPane>
       </AnchorPane>
     </SplitPane>

@@ -1,6 +1,6 @@
 package com.github.geoaxis.blessedjavafxrpi3;
 
-public enum States {
+public enum BLEState {
   READY("Ready"),
   SCANNING("Scanning"),
   CONNECTING("Connecting"),
@@ -9,7 +9,7 @@ public enum States {
 
   String text;
 
-  States(String text) {
+  BLEState(String text) {
     this.text = text;
   }
 
