@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
@@ -65,22 +66,21 @@ public class SensorTagScannerController implements Initializable {
   private final StringProperty ambientTemperatureString = new SimpleStringProperty("00.00");
 
   private final ObservableList<String> discoveredDevices = FXCollections.observableArrayList();
-  private final Map<String, BluetoothPeripheral> peripheralMap = new HashMap<>();
+  private final Map<String, BluetoothPeripheral> peripheralMap = new ConcurrentHashMap<>();
 
   private final PeripheralCallback peripheralCallback = new PeripheralCallback(irTemperatureString,
       ambientTemperatureString);
-
-  private final BluetoothCentralManagerCallback managerCallback = new CentralManagerCallback(
-      bleStateProperty,
-      connectedPeripheral,
-      discoveredDevices,
-      peripheralMap);
 
 
   private final BluetoothCentralManager centralManager;
 
   public SensorTagScannerController() {
     log.info("initializing BluetoothCentral");
+    BluetoothCentralManagerCallback managerCallback = new CentralManagerCallback(
+        bleStateProperty,
+        connectedPeripheral,
+        discoveredDevices,
+        peripheralMap);
     centralManager = new BluetoothCentralManager(managerCallback, Set.of(SCANOPTION_NO_NULL_NAMES));
   }
 

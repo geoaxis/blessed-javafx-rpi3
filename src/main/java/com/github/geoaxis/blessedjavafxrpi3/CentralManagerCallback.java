@@ -10,6 +10,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.collections.ObservableList;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 
 @Slf4j
 @AllArgsConstructor
@@ -21,22 +22,22 @@ public class CentralManagerCallback extends BluetoothCentralManagerCallback {
   private final Map<String, BluetoothPeripheral> peripheralMap;
 
   @Override
-  public void onConnectedPeripheral(BluetoothPeripheral peripheral) {
-    log.info("Conndected peripheral {}" + peripheral.getAddress());
+  public void onConnectedPeripheral(@NotNull BluetoothPeripheral peripheral) {
+    log.info("Connected peripheral {}" + peripheral.getAddress());
     connectedPeripheral.set(peripheral);
 
     Platform.runLater(() -> bleStateProperty.setValue(BLEState.CONNECTED));
   }
 
   @Override
-  public void onConnectionFailed(BluetoothPeripheral peripheral, BluetoothCommandStatus status) {
+  public void onConnectionFailed(@NotNull BluetoothPeripheral peripheral, @NotNull BluetoothCommandStatus status) {
     log.error("Failed to connect peripheral {}" + peripheral.getAddress());
     Platform.runLater(() -> bleStateProperty.setValue(BLEState.READY));
   }
 
   @Override
-  public void onDisconnectedPeripheral(BluetoothPeripheral peripheral,
-      BluetoothCommandStatus status) {
+  public void onDisconnectedPeripheral(@NotNull BluetoothPeripheral peripheral,
+      @NotNull  BluetoothCommandStatus status) {
     log.info("Disconnected peripheral {}" + peripheral.getAddress());
     Platform.runLater(() -> {
       bleStateProperty.setValue(BLEState.READY);
@@ -45,13 +46,16 @@ public class CentralManagerCallback extends BluetoothCentralManagerCallback {
   }
 
   @Override
-  public void onDiscoveredPeripheral(final BluetoothPeripheral peripheral,
-      final ScanResult scanResult) {
+  public void onDiscoveredPeripheral(@NotNull BluetoothPeripheral peripheral,
+      @NotNull ScanResult scanResult) {
     log.info("Discovered device" + peripheral.getAddress());
     if (!discoveredDevices.contains(peripheral.getAddress()) && bleStateProperty.getValue()
         .equals(BLEState.SCANNING)) {
       discoveredDevices.add(peripheral.getAddress());
-      peripheralMap.put(peripheral.getAddress(), peripheral);
+      Platform.runLater(() -> {
+        peripheralMap.put(peripheral.getAddress(), peripheral);
+
+      });
     }
   }
 

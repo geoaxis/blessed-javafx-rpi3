@@ -7,7 +7,6 @@ import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.UUID_TEMPE
 import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.UUID_TEMPERATURE_SERVICE;
 import static com.welie.blessed.BluetoothCommandStatus.COMMAND_SUCCESS;
 
-import com.welie.blessed.BluetoothBytesParser;
 import com.welie.blessed.BluetoothCommandStatus;
 import com.welie.blessed.BluetoothGattCharacteristic;
 import com.welie.blessed.BluetoothGattCharacteristic.WriteType;
@@ -20,6 +19,7 @@ import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 
 @Slf4j
 @AllArgsConstructor
@@ -29,8 +29,8 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
     private final StringProperty ambientTemperatureString;
 
     @Override
-    public void onServicesDiscovered(BluetoothPeripheral peripheral,
-        List< BluetoothGattService > services) {
+    public void onServicesDiscovered(@NotNull BluetoothPeripheral peripheral,
+        @NotNull  List<BluetoothGattService> services) {
       if (peripheral.getService(UUID_TEMPERATURE_SERVICE) != null) {
         peripheral.writeCharacteristic(UUID_TEMPERATURE_SERVICE,
             UUID_TEMPERATURE_CONFIG,
@@ -46,10 +46,10 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
     }
 
     @Override
-    public void onCharacteristicWrite(BluetoothPeripheral peripheral,
+    public void onCharacteristicWrite(@NotNull BluetoothPeripheral peripheral,
     byte[] value,
-    BluetoothGattCharacteristic characteristicUUID,
-    BluetoothCommandStatus status) {
+    @NotNull BluetoothGattCharacteristic characteristicUUID,
+    @NotNull BluetoothCommandStatus status) {
 
       // Deal with errors
       if (status != COMMAND_SUCCESS) {
@@ -70,10 +70,10 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
     }
 
     @Override
-    public void onCharacteristicUpdate(BluetoothPeripheral peripheral,
+    public void onCharacteristicUpdate(@NotNull BluetoothPeripheral peripheral,
     byte[] value,
-    BluetoothGattCharacteristic characteristic,
-    BluetoothCommandStatus status) {
+    @NotNull BluetoothGattCharacteristic characteristic,
+    @NotNull BluetoothCommandStatus status) {
       final UUID characteristicUUID = characteristic.getUuid();
 
       // Deal with errors
