@@ -1,13 +1,13 @@
 package com.github.geoaxis.blessedjavafxrpi3;
 
 import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.CC_2650_SENSOR_TAG_SCAN_NAME;
+import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.SENSOR_TAG_SCAN_NAME;
 import static com.welie.blessed.BluetoothCentralManager.SCANOPTION_NO_NULL_NAMES;
 
 import com.welie.blessed.BluetoothCentralManager;
 import com.welie.blessed.BluetoothCentralManagerCallback;
 import com.welie.blessed.BluetoothPeripheral;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -132,7 +132,7 @@ public class SensorTagScannerController implements Initializable {
   public void scan() {
     bleStateProperty.setValue(BLEState.SCANNING);
     clearDevices();
-    centralManager.scanForPeripheralsWithNames(new String[]{CC_2650_SENSOR_TAG_SCAN_NAME});
+    centralManager.scanForPeripheralsWithNames(new String[]{CC_2650_SENSOR_TAG_SCAN_NAME, SENSOR_TAG_SCAN_NAME});
   }
 
   public void clearDevices() {

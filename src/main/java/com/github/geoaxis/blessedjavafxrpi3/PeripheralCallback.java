@@ -1,6 +1,6 @@
 package com.github.geoaxis.blessedjavafxrpi3;
 
-import static com.github.geoaxis.blessedjavafxrpi3.CC2650DataProcessor.calculateTemperature;
+import static com.github.geoaxis.blessedjavafxrpi3.SensorTagDataProcessor.calculateTemperature;
 import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.ENABLE_COMMAND;
 import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.UUID_TEMPERATURE_CONFIG;
 import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.UUID_TEMPERATURE_DATA;

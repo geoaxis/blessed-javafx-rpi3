@@ -1,6 +1,6 @@
 package com.github.geoaxis.blessedjavafxrpi3;
 
-public class CC2650DataProcessor {
+public class SensorTagDataProcessor {
 
   private static final float SCALE_LSB = 0.03125f;
 

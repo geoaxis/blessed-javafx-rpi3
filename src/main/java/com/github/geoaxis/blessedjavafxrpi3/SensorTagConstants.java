@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class SensorTagConstants {
   public static final String CC_2650_SENSOR_TAG_SCAN_NAME = "CC2650 SensorTag";
+  public static final String SENSOR_TAG_SCAN_NAME = "SensorTag";
 
   public static final UUID UUID_TEMPERATURE_SERVICE = UUID.fromString(
       "f000aa00-0451-4000-b000-000000000000");
