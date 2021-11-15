@@ -109,7 +109,6 @@ public class SensorTagScannerController  {
   }
 
   public void scan() {
-    clearDevices();
     discoveredDevices.add("Device");
   }
 
