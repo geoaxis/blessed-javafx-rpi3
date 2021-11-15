@@ -83,9 +83,7 @@
           <mainClass>${main.class}</mainClass>
           <reflectionList>
             <list>javafx.fxml.FXMLLoader</list>
-            <list>com.github.geoaxis.blessedjavafxrpi3.SensorTagScannerController</list>
-            <list>org.apache.logging.log4j.message.DefaultFlowMessageFactory</list>
-            <list>org.apache.logging.log4j.message.ParameterizedMessageFactory</list>
+            <list>javafx.scene.control.SplitPane</list>
           </reflectionList>
           <nativeImageArgs>-H:+AllowIncompleteClasspath</nativeImageArgs>
           <runtimeArgs>${runtime.options}</runtimeArgs>
