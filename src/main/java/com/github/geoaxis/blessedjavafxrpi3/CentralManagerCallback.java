@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
-@Slf4j
 @AllArgsConstructor
 public class CentralManagerCallback extends BluetoothCentralManagerCallback {
 
@@ -23,7 +22,7 @@ public class CentralManagerCallback extends BluetoothCentralManagerCallback {
 
   @Override
   public void onConnectedPeripheral(@NotNull BluetoothPeripheral peripheral) {
-    log.info("Connected peripheral {}" + peripheral.getAddress());
+    System.out.println("Connected peripheral {}" + peripheral.getAddress());
     connectedPeripheral.set(peripheral);
 
     Platform.runLater(() -> bleStateProperty.setValue(BLEState.CONNECTED));
@@ -31,14 +30,14 @@ public class CentralManagerCallback extends BluetoothCentralManagerCallback {
 
   @Override
   public void onConnectionFailed(@NotNull BluetoothPeripheral peripheral, @NotNull BluetoothCommandStatus status) {
-    log.error("Failed to connect peripheral {}" + peripheral.getAddress());
+    System.err.println("Failed to connect peripheral {}" + peripheral.getAddress());
     Platform.runLater(() -> bleStateProperty.setValue(BLEState.READY));
   }
 
   @Override
   public void onDisconnectedPeripheral(@NotNull BluetoothPeripheral peripheral,
       @NotNull  BluetoothCommandStatus status) {
-    log.info("Disconnected peripheral {}" + peripheral.getAddress());
+    System.out.println("Disconnected peripheral {}" + peripheral.getAddress());
     Platform.runLater(() -> {
       bleStateProperty.setValue(BLEState.READY);
       connectedPeripheral.set(null);
@@ -48,7 +47,7 @@ public class CentralManagerCallback extends BluetoothCentralManagerCallback {
   @Override
   public void onDiscoveredPeripheral(@NotNull BluetoothPeripheral peripheral,
       @NotNull ScanResult scanResult) {
-    log.info("Discovered device" + peripheral.getAddress());
+    System.out.println("Discovered device" + peripheral.getAddress());
     if (!discoveredDevices.contains(peripheral.getAddress()) && bleStateProperty.getValue()
         .equals(BLEState.SCANNING)) {
       discoveredDevices.add(peripheral.getAddress());
@@ -62,7 +61,7 @@ public class CentralManagerCallback extends BluetoothCentralManagerCallback {
   @Override
   public void onScanFailed(int errorCode) {
     Platform.runLater(() -> bleStateProperty.setValue(BLEState.READY));
-    log.error("Scan failed");
+    System.err.println("Scan failed");
   }
 
 

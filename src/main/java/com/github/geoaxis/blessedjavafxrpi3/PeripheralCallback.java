@@ -21,7 +21,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
-@Slf4j
 @AllArgsConstructor
 public class PeripheralCallback extends BluetoothPeripheralCallback {
 
@@ -53,12 +52,12 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
 
       // Deal with errors
       if (status != COMMAND_SUCCESS) {
-        log.error("command failed with status {}", status);
+        System.err.println("command failed with status {}", status);
         return;
       }
 
       if (characteristicUUID.getUuid().equals(UUID_TEMPERATURE_CONFIG)) {
-        log.info("temperature notifications configured");
+        System.out.println("temperature notifications configured");
 
         BluetoothGattCharacteristic temperatureDataChar = peripheral.getCharacteristic(
             UUID_TEMPERATURE_SERVICE,
@@ -78,12 +77,12 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
 
       // Deal with errors
       if (status != COMMAND_SUCCESS) {
-        log.error("command failed with status {}", status);
+        System.err.println("command failed with status {}", status);
         return;
       }
 
       if (characteristicUUID.equals((UUID_TEMPERATURE_DATA))) {
-        log.info("receiving temperature data update");
+        System.out.println("receiving temperature data update");
 
         var result = calculateTemperature(value);
 

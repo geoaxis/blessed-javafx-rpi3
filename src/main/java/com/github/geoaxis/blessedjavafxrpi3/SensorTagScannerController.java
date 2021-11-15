@@ -30,7 +30,6 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.FlowPane;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class SensorTagScannerController  {
 
   @FXML
@@ -73,7 +72,7 @@ public class SensorTagScannerController  {
   private final BluetoothCentralManager centralManager;
 
   public SensorTagScannerController() {
-    log.info("initializing BluetoothCentral");
+    System.out.println("initializing BluetoothCentral");
     BluetoothCentralManagerCallback managerCallback = new CentralManagerCallback(
         bleStateProperty,
         connectedPeripheral,
@@ -97,7 +96,7 @@ public class SensorTagScannerController  {
     };
     sleeper.setOnSucceeded(event -> {
       bleStateProperty.setValue(BLEState.READY);
-      log.info("Stopping Scan");
+      System.out.println("Stopping Scan");
     });
     new Thread(sleeper).start();
   }
@@ -134,7 +133,7 @@ public class SensorTagScannerController  {
 
   public void clearDevices() {
     Platform.runLater(() -> {
-      log.error("Clearing previously found devices");
+      System.err.println("Clearing previously found devices");
       discoveredDevices.clear();
       peripheralMap.clear();
     });
