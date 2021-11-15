@@ -52,7 +52,7 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
 
       // Deal with errors
       if (status != COMMAND_SUCCESS) {
-        System.err.println("command failed with status {}", status);
+        System.err.println("command failed with status" + status);
         return;
       }
 
@@ -77,7 +77,7 @@ public class PeripheralCallback extends BluetoothPeripheralCallback {
 
       // Deal with errors
       if (status != COMMAND_SUCCESS) {
-        System.err.println("command failed with status {}", status);
+        System.err.println("command failed with status"+ status);
         return;
       }
 
