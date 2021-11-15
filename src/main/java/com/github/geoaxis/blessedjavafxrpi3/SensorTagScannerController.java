@@ -29,11 +29,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.FlowPane;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
-@Component
 @Slf4j
-public class SensorTagScannerController implements Initializable {
+public class SensorTagScannerController  {
 
   @FXML
   public Label status;
@@ -110,8 +108,7 @@ public class SensorTagScannerController implements Initializable {
     centralManager.cancelConnection(connectedPeripheral.getValue());
   }
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
+  public void initialize() {
     Bindings.bindContent(devices.getItems(), discoveredDevices);
     scanProgress.visibleProperty().bind(bleStateProperty.isEqualTo(BLEState.SCANNING));
     temperaturePane.visibleProperty().bind(bleStateProperty.isEqualTo(BLEState.CONNECTED));
