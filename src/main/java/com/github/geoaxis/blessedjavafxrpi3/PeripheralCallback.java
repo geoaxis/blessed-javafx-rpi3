@@ -17,17 +17,21 @@ import java.util.List;
 import java.util.UUID;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
-@AllArgsConstructor
+
 public class PeripheralCallback extends BluetoothPeripheralCallback {
 
     private final StringProperty irTemperatureString;
     private final StringProperty ambientTemperatureString;
 
-    @Override
+  public PeripheralCallback(StringProperty irTemperatureString,
+      StringProperty ambientTemperatureString) {
+    this.irTemperatureString = irTemperatureString;
+    this.ambientTemperatureString = ambientTemperatureString;
+  }
+
+  @Override
     public void onServicesDiscovered(@NotNull BluetoothPeripheral peripheral,
         @NotNull  List<BluetoothGattService> services) {
       if (peripheral.getService(UUID_TEMPERATURE_SERVICE) != null) {

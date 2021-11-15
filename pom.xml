@@ -18,7 +18,6 @@
     <gluonfx.maven.plugin.version>1.0.9</gluonfx.maven.plugin.version>
     <java.version>11</java.version>
     <blessed-bluez-version>0.39</blessed-bluez-version>
-    <lombok-version>1.18.22</lombok-version>
     <javafx.version>18-ea+6</javafx.version>
     <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
 
@@ -30,12 +29,6 @@
     <remote.dir/>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok-version}</version>
-      <optional>true</optional>
-    </dependency>
     <dependency>
       <groupId>com.github.weliem.blessed-bluez</groupId>
       <artifactId>blessed</artifactId>
@@ -55,11 +48,6 @@
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
       <version>${jetbrains.annotations.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.32</version>
     </dependency>
   </dependencies>
 

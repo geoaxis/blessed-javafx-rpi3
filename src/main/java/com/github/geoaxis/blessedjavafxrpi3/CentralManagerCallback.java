@@ -8,17 +8,24 @@ import java.util.Map;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.ObservableList;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
-@AllArgsConstructor
 public class CentralManagerCallback extends BluetoothCentralManagerCallback {
 
   private final ObjectProperty<BLEState> bleStateProperty;
   private final ObjectProperty<BluetoothPeripheral> connectedPeripheral;
   private final ObservableList<String> discoveredDevices;
   private final Map<String, BluetoothPeripheral> peripheralMap;
+
+  public CentralManagerCallback(ObjectProperty<BLEState> bleStateProperty,
+      ObjectProperty<BluetoothPeripheral> connectedPeripheral,
+      ObservableList<String> discoveredDevices,
+      Map<String, BluetoothPeripheral> peripheralMap) {
+    this.bleStateProperty = bleStateProperty;
+    this.connectedPeripheral = connectedPeripheral;
+    this.discoveredDevices = discoveredDevices;
+    this.peripheralMap = peripheralMap;
+  }
 
   @Override
   public void onConnectedPeripheral(@NotNull BluetoothPeripheral peripheral) {
