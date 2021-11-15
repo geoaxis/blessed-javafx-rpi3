@@ -90,6 +90,7 @@
             <list>javafx.fxml.FXMLLoader</list>
             <list>com.github.geoaxis.blessedjavafxrpi3.SensorTagScannerController</list>
           </reflectionList>
+          <nativeImageArgs>-H:+AllowIncompleteClasspath</nativeImageArgs>
           <runtimeArgs>${runtime.options}</runtimeArgs>
           <remoteHostName>${remote.host.name}</remoteHostName>
           <remoteDir>${remote.dir}</remoteDir>
