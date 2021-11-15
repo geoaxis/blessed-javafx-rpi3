@@ -90,6 +90,7 @@
             <list>javafx.fxml.FXMLLoader</list>
             <list>com.github.geoaxis.blessedjavafxrpi3.SensorTagScannerController</list>
             <list>org.apache.logging.log4j.message.DefaultFlowMessageFactory</list>
+            <list>org.apache.logging.log4j.message.ParameterizedMessageFactory</list>
           </reflectionList>
           <nativeImageArgs>-H:+AllowIncompleteClasspath</nativeImageArgs>
           <runtimeArgs>${runtime.options}</runtimeArgs>
