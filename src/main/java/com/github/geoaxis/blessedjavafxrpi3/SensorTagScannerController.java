@@ -2,16 +2,13 @@ package com.github.geoaxis.blessedjavafxrpi3;
 
 import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.CC_2650_SENSOR_TAG_SCAN_NAME;
 import static com.github.geoaxis.blessedjavafxrpi3.SensorTagConstants.SENSOR_TAG_SCAN_NAME;
-import static com.welie.blessed.BluetoothCentralManager.SCANOPTION_NO_NULL_NAMES;
 
-import com.welie.blessed.BluetoothCentralManager;
-import com.welie.blessed.BluetoothCentralManagerCallback;
-import com.welie.blessed.BluetoothPeripheral;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.IntStream;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
@@ -55,28 +52,17 @@ public class SensorTagScannerController  {
   private ListView<String> devices = new ListView<>();
 
   private final ObjectProperty<BLEState> bleStateProperty = new SimpleObjectProperty<>(BLEState.READY);
-  private final ObjectProperty<BluetoothPeripheral> connectedPeripheral = new SimpleObjectProperty<>();
 
   private final StringProperty irTemperatureString = new SimpleStringProperty("00.00");
   private final StringProperty ambientTemperatureString = new SimpleStringProperty("00.00");
 
   private final ObservableList<String> discoveredDevices = FXCollections.observableArrayList();
-  private final Map<String, BluetoothPeripheral> peripheralMap = new ConcurrentHashMap<>();
-
-  private final PeripheralCallback peripheralCallback = new PeripheralCallback(irTemperatureString,
-      ambientTemperatureString);
 
 
-  private final BluetoothCentralManager centralManager;
+
 
   public SensorTagScannerController() {
     System.out.println("initializing BluetoothCentral");
-    BluetoothCentralManagerCallback managerCallback = new CentralManagerCallback(
-        bleStateProperty,
-        connectedPeripheral,
-        discoveredDevices,
-        peripheralMap);
-    centralManager = new BluetoothCentralManager(managerCallback, Set.of(SCANOPTION_NO_NULL_NAMES));
   }
 
   @FXML
@@ -102,7 +88,6 @@ public class SensorTagScannerController  {
   @FXML
   protected void onDisconnect() {
     bleStateProperty.setValue(BLEState.DISCONNECTING);
-    centralManager.cancelConnection(connectedPeripheral.getValue());
   }
 
   public void initialize() {
@@ -124,23 +109,18 @@ public class SensorTagScannerController  {
   }
 
   public void scan() {
-    bleStateProperty.setValue(BLEState.SCANNING);
     clearDevices();
-    centralManager.scanForPeripheralsWithNames(new String[]{CC_2650_SENSOR_TAG_SCAN_NAME, SENSOR_TAG_SCAN_NAME});
+    discoveredDevices.add("Device");
   }
 
   public void clearDevices() {
     Platform.runLater(() -> {
       System.err.println("Clearing previously found devices");
       discoveredDevices.clear();
-      peripheralMap.clear();
     });
   }
 
   public void connect(String address) {
-    centralManager.stopScan();
     bleStateProperty.setValue(BLEState.CONNECTING);
-
-    centralManager.connectPeripheral(peripheralMap.get(address), peripheralCallback);
   }
 }

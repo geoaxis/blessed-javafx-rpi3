@@ -39,11 +39,6 @@
 
 
     <dependency>
-      <groupId>com.github.weliem.blessed-bluez</groupId>
-      <artifactId>blessed</artifactId>
-      <version>${blessed-bluez-version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
       <version>${javafx.version}</version>
