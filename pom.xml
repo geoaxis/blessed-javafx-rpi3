@@ -89,6 +89,10 @@
         <configuration>
           <target>${gluonfx.target}</target>
           <mainClass>${main.class}</mainClass>
+          <reflectionList>
+            <list>javafx.fxml.FXMLLoader</list>
+            <list>com.github.geoaxis.blessedjavafxrpi3.SensorTagScannerController</list>
+          </reflectionList>
           <runtimeArgs>${runtime.options}</runtimeArgs>
           <remoteHostName>${remote.host.name}</remoteHostName>
           <remoteDir>${remote.dir}</remoteDir>
