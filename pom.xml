@@ -29,6 +29,15 @@
     <remote.dir/>
   </properties>
   <dependencies>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.14.1</version>
+    </dependency>
+
+
     <dependency>
       <groupId>com.github.weliem.blessed-bluez</groupId>
       <artifactId>blessed</artifactId>
