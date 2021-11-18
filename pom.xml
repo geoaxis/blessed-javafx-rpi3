@@ -18,7 +18,7 @@
     <java.version>11</java.version>
     <blessed-bluez-version>0.39</blessed-bluez-version>
     <lombok-version>1.18.22</lombok-version>
-    <javafx.version>18-ea+6</javafx.version>
+    <javafx.version>18-ea+7</javafx.version>
     <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
   </properties>
   <dependencies>
