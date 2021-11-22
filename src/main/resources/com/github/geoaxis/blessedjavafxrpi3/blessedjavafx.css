@@ -1,0 +1,18 @@
+.list-cell{
+  -fx-font-size:18.0;
+  -fx-padding: 20px;
+}
+
+.large-text{
+  -fx-font-size: 36.0;
+}
+.temperature-labels {
+  -fx-font-size: 20;
+}
+
+.temperature-measurement {
+  -fx-font-size: 48;
+}
+.small-text{
+  -fx-font-size: 18.0;
+}

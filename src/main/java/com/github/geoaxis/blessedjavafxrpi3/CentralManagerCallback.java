@@ -51,8 +51,8 @@ public class CentralManagerCallback extends BluetoothCentralManagerCallback {
     log.info("Discovered device" + peripheral.getAddress());
     if (!discoveredDevices.contains(peripheral.getAddress()) && bleStateProperty.getValue()
         .equals(BLEState.SCANNING)) {
-      discoveredDevices.add(peripheral.getAddress());
       Platform.runLater(() -> {
+        discoveredDevices.add(peripheral.getAddress());
         peripheralMap.put(peripheral.getAddress(), peripheral);
 
       });
