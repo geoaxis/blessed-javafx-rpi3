@@ -1,9 +1,8 @@
 [Unit]
 Description=Sensor Tag viewer service
-After=multi-user.target
+After=bluetooth.target
 
 [Service]
-Type=idle
 Restart=on-failure
 ExecStart=/bin/bash  /home/pi/sensortagviewer.sh
 User=pi
