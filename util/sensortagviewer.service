@@ -1,0 +1,12 @@
+[Unit]
+Description=Sensor Tag viewer service
+After=multi-user.target
+
+[Service]
+Type=idle
+Restart=on-failure
+ExecStart=/bin/bash  /home/pi/sensortagviewer.sh
+User=pi
+
+[Install]
+WantedBy=multi-user.target
